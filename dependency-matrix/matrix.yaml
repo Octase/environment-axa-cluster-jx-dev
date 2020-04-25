@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: Octase
+  repo: spring-jx-quickstart
+  url: https://github.com/Octase/spring-jx-quickstart.git
+  version: ""
+  versionURL: ""
