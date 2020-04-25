@@ -1,39 +1,84 @@
 autoUpdate:
   enabled: false
   schedule: ""
+bootConfigURL: https://github.com/cloudbees/cloudbees-jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: true
-  project: ""
   azure: {}
+  clusterName: axa-cluster-jx
+  devEnvApprovers:
+  - FrancisLfg
+  - Francis Laforge
+  environmentGitOwner: Octase
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: regal-ceiling-275218
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  zone: europe-west1-b
 environments:
-  - key: dev
-  - key: staging
-  - key: production
+- ingress:
+    domain: 35.189.211.146.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-axa-cluster-jx-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-axa-cluster-jx-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-axa-cluster-jx-production
+gitops: true
 ingress:
-  domain: ""
+  domain: 35.189.211.146.nip.io
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
+repository: nexus
 secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
-    url: ""
+    url: gs://axa-cluster-jx-logs-2fd1ad27-aa43-4c56-83d8-70f18dd0ba1
   reports:
     enabled: true
-    url: ""
+    url: gs://axa-cluster-jx-reports-81c7534b-6493-458f-8b58-89e0ba64
   repository:
     enabled: true
-    url: ""
+    url: gs://axa-cluster-jx-repository-ab8ec811-bf03-44a2-9fff-c2208
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: 2.0.1245+cjxd.8
+  ref: v0.0.29
   url: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git
 webhook: prow

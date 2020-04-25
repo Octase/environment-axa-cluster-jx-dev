@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:axa-cluster-jx/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: admin@octase.com
+  token: vault:axa-cluster-jx/pipelineUser:token
+  username: octase-jx-bot
+prow:
+  hmacToken: vault:axa-cluster-jx/prow:hmacToken
